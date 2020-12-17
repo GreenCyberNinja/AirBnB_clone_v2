@@ -15,7 +15,7 @@ from models.review import Review
 class DBStorage:
     """This class manages storage of hbnb models in JSON format"""
     __engine = None
-    __sesson = None
+    __session = None
 
     def __init__(self):
         """initializes the DBStorage object"""
