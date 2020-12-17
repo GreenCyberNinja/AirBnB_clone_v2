@@ -1,4 +1,4 @@
---script that creates a test server for MySQL
+-- script that creates a test server for MySQL
 
 CREATE DATABASE IF NOT EXISTS hbnb_test_db;
 DROP USER IF EXISTS 'hbnb_test'@'localhost';
