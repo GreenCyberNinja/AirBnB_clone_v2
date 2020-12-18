@@ -29,7 +29,7 @@ class DBStorage:
             self.__engine.drop_all()
 
     def all(self, cls=None):
-        """x"""
+        """returns everything inside database"""
         if cls is None:
             cls = [State, City]
         out = {}
@@ -39,7 +39,7 @@ class DBStorage:
         return out
 
     def new(self, obj):
-        """x"""
+        """ creates new table in db"""
         self.__session.add(obj)
 
     def save(self):
