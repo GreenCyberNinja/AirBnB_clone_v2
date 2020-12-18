@@ -43,17 +43,17 @@ class DBStorage:
         self.__session.add(obj)
 
     def save(self):
-        """x"""
+        """saves object to db"""
         self.__session.commit()
 
     def delete(self, obj=None):
-        """x"""
+        """delets object from db"""
         if obj is not None:
             self.__session.delete(obj)
             self.__session.commit()
 
     def reload(self):
-        """x"""
+        """reloads object"""
         Base.metadata.create_all(self.__engine)
         factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
         master = scoped_session(factory)
