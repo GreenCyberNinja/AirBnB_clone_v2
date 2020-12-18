@@ -12,3 +12,4 @@ class City(BaseModel, Base):
     state_id = Column(String(60),
                       ForeignKey(State.id, ondelete="CASCADE"),
                       nullable=False)
+    places = relationship("Place", backref="cities", cascade="all, delete")
