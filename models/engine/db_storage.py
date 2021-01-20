@@ -13,6 +13,7 @@ from models.review import Review
 classed = [Amenity, City,
            Place, Review, State, User]
 
+
 class DBStorage:
     """This class manages storage of hbnb models in JSON format"""
     __engine = None
@@ -35,7 +36,6 @@ class DBStorage:
         for ind in classed:
             if cls is None or ind == cls:
                 ls_obj = self.__session.query(cls).all()
-                
                 for obj in ls_obj:
                     my_id = obj.__class__.__name__ + "." + obj.id
                     out.update({my_id: obj})
