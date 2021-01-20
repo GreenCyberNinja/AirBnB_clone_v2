@@ -62,3 +62,7 @@ class FileStorage:
                 if obj is v:
                     FileStorage.__objects.pop(k)
                     break
+
+    def close(self):
+        """calls reload"""
+        self.reload()
