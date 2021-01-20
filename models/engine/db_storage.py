@@ -10,7 +10,8 @@ from models.city import City
 from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
-
+classed = [Amenity, City,
+           Place, Review, State, User]
 
 class DBStorage:
     """This class manages storage of hbnb models in JSON format"""
@@ -30,12 +31,14 @@ class DBStorage:
 
     def all(self, cls=None):
         """returns everything inside database"""
-        if cls is None:
-            cls = [State, City]
         out = {}
-        for obj in self.__session.query(eval(cls)).all():
-            my_id = type(obj).__name__ + "." + obj.id
-            out.update({my_id: obj})
+        for ind in classed:
+            if cls is None or ind == cls:
+                ls_obj = self.__session.query(cls).all()
+                
+                for obj in ls_obj:
+                    my_id = obj.__class__.__name__ + "." + obj.id
+                    out.update({my_id: obj})
         return out
 
     def new(self, obj):
@@ -61,4 +64,4 @@ class DBStorage:
 
     def close(self):
         """closes the session"""
-        self.__sesion.remove()
+        self.__session.close()
