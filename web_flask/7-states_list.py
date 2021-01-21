@@ -8,8 +8,9 @@ app = Flask(__name__)
 
 @app.route('/states_list', strict_slashes=False)
 def statels():
-   db = storage.all(State).values()
-   return render_template('7-states_list.html', db=db)
+    db = storage.all(State).values()
+    return render_template('7-states_list.html', db=db)
+
 
 @app.teardown_appcontext
 def close_db(err):
